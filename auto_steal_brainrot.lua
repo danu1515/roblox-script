@@ -6,13 +6,8 @@ local function getHRP()
     return char:WaitForChild("HumanoidRootPart")
 end
 
-local stealRemote = nil
-for _, v in pairs(game:GetDescendants()) do
-    if v:IsA("RemoteEvent") and string.lower(v.Name):find("steal") then
-        stealRemote = v
-        break
-    end
-end
+local stealRemote = game:GetService("ReplicatedStorage")
+    .Packages.Net["RE/StealService/DeliverySteal"]
 
 if not stealRemote then
     warn("RemoteEvent 'steal' tidak ditemukan.")
